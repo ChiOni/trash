@@ -1,8 +1,11 @@
 ---
 layout: post
-title:  "PaperReview - LIME (kdd 2016)"
-date:   2020-01-29 00:23:46 +0900
-categories: jekyll update
+title: Why Should I Trust You? (KDD 2016)
+date: 2020-01-29 00:00:00 +0000
+description: Expaining the Predictions of Any Classifier
+img: /assets/img/lime/profile.jpg # Add image post (optional)
+fig-caption: # Add figcaption (optional)
+tags: [PaperReview, ExplainableAI]
 ---
 
 [“Why Should I Trust You?” Explaining the Predictions of Any Classifier(KDD 2016)](https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf)  
@@ -19,7 +22,7 @@ categories: jekyll update
 #  
   
   
-![](/image/lime/limeone.jpg)  
+![](/assets/img/lime/limeone.jpg)  
 #  
   
   
@@ -30,7 +33,7 @@ categories: jekyll update
 # 
   
   
-![](/image/lime/limetwo.jpg)  
+![](/assets/img/lime/limetwo.jpg)    
 #  
 환자의 기록을 통해 증상을 예측하는 모델의 결과물을 의사는 어떻게 납득할 수 있을까?  
   
