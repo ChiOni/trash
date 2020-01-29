@@ -22,7 +22,7 @@ tags: [PaperReview, ExplainableAI]
 #  
   
   
-![](/assets/img/lime/limeone.jpg)  
+![](/lime/limeone.jpg)  
 #  
   
   
@@ -33,7 +33,7 @@ tags: [PaperReview, ExplainableAI]
 # 
   
   
-![](/assets/img/lime/limetwo.jpg)    
+![](/lime/limetwo.jpg)    
 #  
 환자의 기록을 통해 증상을 예측하는 모델의 결과물을 의사는 어떻게 납득할 수 있을까?  
   
