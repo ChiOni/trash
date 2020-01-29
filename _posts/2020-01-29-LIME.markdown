@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "PaperReview - LIME (kdd 2016)"
+date:   2020-01-29 00:23:46 +0900
+categories: jekyll update
+---
+
+[“Why Should I Trust You?” Explaining the Predictions of Any Classifier(KDD 2016)](https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf)  
+   
+#     
+  
+    
+    
+  
+  
+  
+압도적인 성능을 무기로 블랙 박스 모델은 기존의 통계적 방법론들을 대체하고 있습니다.  
+그러나 실험 데이터에게 무자비하던 딥러닝 모델들이 현실 세계의 데이터를 마주했을 때 갑자기 멍청해지는 경우를 자주 볼 수 있는데, 이것이 논문의 Motivation이 된 <b>Trust Problem</b> 입니다.  
+#  
+  
+  
+![](/image/lime/limeone.jpg)  
+#  
+  
+  
+<b>Task</b> 메일의 수신자가 기독교인지 무교인지 구별  
+<b>Problem</b> Train Set에 대해 높은 정확도를 보이던 모델에게 중요한 Feature가 발신자 이름인 것을 확인 
+  
+즉, 발신자 이름이 다양한 현실 세계의 데이터에서 해당 모델은 실패할 것으로 보입니다.  
+# 
+  
+  
+![](/image/lime/limetwo.jpg)  
+#  
+환자의 기록을 통해 증상을 예측하는 모델의 결과물을 의사는 어떻게 납득할 수 있을까?  
+  
+  
+- Flu가 정답이라는 근거는 sneeze / headache  
+- Flu가 정답이 아닐 수 있는 이유는 no fatigue  
+  
+  
+이렇게 친절하게 결과물의 이유를 설명해준다면 사용자가 모델을 신뢰할 수 있지 않을까요?  
+#  
+  
+  
+기존에 연구자들은 ML 모델을 신뢰하기 위해 3가지 정도의 방법을 사용했는데  
+  
+1. 결과물을 해석할 수 있는 얕은 tree model 등을 사용하거나  
+2. accuracy 등의 스코어를 신뢰하거나  
+3. A/B Testing을 통해 현실의 유저 피드백을 받는 것이었습니다.  
+#  
+  
+  
+그러나 이것들은 모두 성능이 좋지 않거나 비용이 많이 드는 등의 문제가 있었고 이런 문제점들을 극복하고자 논문에서 제시한 것이 바로 <b>LIME (Locally Interpretable Model-Agnostic)</b>입니다.  
+#  
+  
+  
+이름만으로 모델을 해석해보자면 LIME은  
+- <b>Locally</b> / Global한 해석이 아니라 지협적인 설명을 제시하고
+
+
+
+
+
