@@ -59,9 +59,9 @@ tags: [PaperReview, ExplainableAI]
 <br/>  
 <br/>
 이름만으로 모델을 해석해보자면 LIME은  
-- <b>Locally</b> / Global한 해석이 아니라 지협적인 설명을 제시하고  
-- <b>Interpretable</b> / 인간이 이해할 수 있는 수준의 방법으로  
-- <b>Model-Agnostic</b> / 어떤 Black-Box 모델에도 적용 가능한 방법일 것 같습니다.  
+- <b>Locally</b> / Global한 해석이 아니라 지협적인 설명을 제시하고    
+- <b>Interpretable</b> / 인간이 이해할 수 있는 수준의 방법으로    
+- <b>Model-Agnostic</b> / 어떤 Black-Box 모델에도 적용 가능한 방법일 것 같습니다.    
 <br/>
 <br/>
 직관적인 예시를 하나 보겠습니다. (사실은 이게 전부입니다 ㅎㅎ)  
