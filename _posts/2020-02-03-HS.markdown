@@ -7,6 +7,28 @@ img: /hs/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [PaperReview, Distiributional Losses]
 ---
-hi
+
+기존의 0/1 라벨이 아닌 Soft Target을 사용하는 것이 여러 분류 문제의 성능 향상에 기여한다는 것이 정설이 되어가고 있다. Soft Target을 사용하는 방법에는 단순히 노이즈를 추가하거나, Knowledge Distillation을 사용하는 등의 방법이 있다. 특히 이미 강화학습 분야에서는 모델이 분포를 학습하는 것이 왜 성능을 향상시키는가에 대한 증거가 존재한다. 해당 논문에서는 이것을 일반화하여 범용적인 Regression 문제에서 적용가능한 새로운 형태의 Loss를 제안한다. 또한 단순히 제안과 실험에서 끝내는 것이 아니라 성능 향상의 이유를 수학적으로 추론한 부분이 흥미롭다.  
+
+#### Paper Summary  
+1. Distributional Losses를 통해 Regression 문제의 예측 성능을 향상시킬 수 있다.
+2. 우리는 해당 로스가 왜 더 좋은 성능을 발휘하는가에 대해 수학적으로 추론했다.
+3. 논문에서 제안된 Distributional Losses = Histogram Loss는 계산이 용이하다.  
+  
+#### Histogram Loss  
+논문에서 제안한 Histogram Loss(HS)는 input x에 대한 ouput y의 분포를 예측하도록 학습된다. 그리고 "True" y 분포와 "Predict" y 분포간의 KL-Divergence의 크기가 Loss가 된다. 처음에는 Output의 형태가 직관적으로 와닿지 않을 수 있지만 로스의 이름이 Histogram이라는 것을 기억하자. 우리가 학습할 모델 f는 히스토그램을 아웃풋으로 내놓게 된다. 쉽게 말하자면, 히스토그램의 막대 갯수만큼의 숫자를 내놓게 된다. 정확히 말하자면, 합이 1이며 [0,1] 사이의 k(# of bins) 길이의 벡터를 내놓게 된다.  
+<br>
+<center><img src="/assets/img/hs/hsone.jpg"></center>  
+불행하게도 논문에서는 직관적으로 이것을 이해시켜줄 어떤 그림도 없다. 저자의 머릿속에 있었을 그림이 아마 저 위의 Plot일 것이라 추측하는데, Loss가 목적하는 것은 연속적인 저 "True"(True라고 우리가 믿는) 분포에 각 원소가 density를 의미하는 k 길이의 벡터가 딱 들어맞는 것이다. 이것을 KL-Divergece를 사용하여 표현하면 아래와 같다.  
+
+𝐷_𝐾𝐿 (𝑃||𝑄)= ∑_(𝑥∈𝑋)▒〖𝑝(𝑥)∗log⁡((𝑄(𝑥))/(𝑃(𝑥)))〗
+
+
+
+
+
+
+
+
   
 [(Paper URL)Improving regression performance with distributional losses](https://arxiv.org/pdf/1806.04613.pdf)  
