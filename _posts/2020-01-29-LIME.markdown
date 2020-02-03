@@ -74,5 +74,6 @@ z'를 z로 바꿔주는 과정. 설명의 편의를 위해 x를 이미지라고 
 <br/>
 <center><img src="/assets/img/lime/limefive.jpg"></center>  
 아직도 납득이 가지 않은 나를 위한 논문에서 제공한 아주 직관적인 예시. 이미지 분류 모델은 맨 왼쪽의 원본 사진을 보고 (전자 기타 > 통기타 > 강아지) 세 가지 정답을 제시했다. 이 모델을 LIME으로 근사하고, 각 정답이 유도되는데 이미지의 어떤 덩어리가 중요했는지 역으로 있다. 만약 전자기타를 정답으로 예측해놓고 중요한 부분은 강아지 얼굴이라고 제시했다면 우리는 모델을 신뢰할 수 없을 것이다. 그러나 보다싶이 모델이 아주 그럴듯한 부분을 중요하다고 콕 찝어줬다는 것을 볼 수 있다.
+<br/>
 
-[Paper URL](https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf)   
+[(PAPER URL)why should i trust you explaining the predictions of any classifier](https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf)   
