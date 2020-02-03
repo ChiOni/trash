@@ -1,0 +1,12 @@
+---
+layout: post
+title: Improving regression performance with distributional losses (ICML 2018)
+date: 2020-02-03 00:00:00 +0000
+description: Histogram Loss
+img: /lime/profile.jpg # Add image post (optional)
+fig-caption: # Add figcaption (optional)
+tags: [PaperReview, Distiributional Losses]
+---
+
+  
+[(Paper URL)](https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf)  
