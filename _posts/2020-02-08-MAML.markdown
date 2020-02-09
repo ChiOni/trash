@@ -14,13 +14,31 @@ tags: [PaperReview, Meta-Learning]
 딥러닝을 서비스로 적용하기에는 많은 허들이 존재하는데, 주어진 문제가 너무 많다는 것도 그 중 하나이다. 많은 과제를 위한 많은 모델, 그리도 더더더 많은 모델의 parameter를 관리하고 조정하는 것은 현실적이지 못하다. 현재 회사에서 이상탐지를 위해 매일 아침 집계하고 모델링하는 시계열이 125만개쯤 되는데 이것들의 예측을 딥러닝을 사용하여 해보겠다는 것이 가당키나 할까?  
   
 <br>  
-  
 따라서 딥러닝을 통한 시계열 이상탐지를 서비스화하기 위해서는 두 가지 조건이 있다.  
 ><b>(1) 좋은 예측을 위해 너무 많은 데이터가 필요하지 않을 것</b>  
 ><b>(2) 다양한 시계열을 소수의 모델로도 관리할 수 있을 것</b>  
   
 즉, 우리의 모델은 <b>Few Shot Learning과 Transfer Learning이</b> 복합된 기능이 필요한데 그것을 바로 아래 논문에서 제안한다.  
   
-#### Meta - Learning
+### Few-Shot Learning  
+- k-shot learning: 각 클래스 별, k개(1~5)의 데이터만으로 효과적인 분류가 가능하도록 하는 것  
+- one shot learning:  클래스 별 하나밖에 데이터가 없는데 분류 모델을 수행 → 사람에게 가능하니 모델도 할 수 있겠지!  
+<center><img src="/assets/img/maml/mamlone.jpg"></center>  
+- zero shot learning: 타겟 클래스에 대한 데이터가 전혀 없는채로 모델을 학습  
+    - (ex) 말 클래스 + 흰/검 스트라이프 클래스 → 두 가지 정보가 존재할 때, 얼룩말이라는 존재하지 않는 데이터를 모델이 학습할 수 있을까?  
+  
+### Meta Learning: Learning to learn
+- Aim to train a model than can rapidly adapt to a new task not used during training with a few examples  
+    - 적은 양의 데이터로부터, 새로운 task를 빠르게 학습할 수 있는 Meta Learner를 학습  
+    - Few Shot Learning 학습을 잘 하기 위한 모델을 학습  
+    
+    - Transfer Learning(pre-training) 접근법과는 어떻게 다를까?  
+        - pre-training은 재사용의 목적!  
+        - 일반적으로 상위 layer의 파라미터는 고정하고 세세한 피쳐를 뽑아줄 것이라 기대하는 하위 layer만 업데이트한다.  
+        - manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 데이터나 클래스 분류 과제로 이관이 가능하다.  
+        - 학습하는 방법을 학습하는 컨셉의 메타러닝과는 다르게 transfer learning은 선행 학습!  
+  
+
+
 
  
