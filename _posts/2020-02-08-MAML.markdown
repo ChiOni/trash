@@ -25,14 +25,13 @@ tags: [PaperReview, Meta-Learning]
 - one shot learning:  클래스 별 하나밖에 데이터가 없는데 분류 모델을 수행 → 사람에게 가능하니 모델도 할 수 있겠지!  
 <center><img src="/assets/img/maml/mamlone.jpg"></center>  
 - zero shot learning: 타겟 클래스에 대한 데이터가 전혀 없는채로 모델을 학습  
-    - (ex) 말 클래스 + 흰/검 스트라이프 클래스 → 두 가지 정보가 존재할 때, 얼룩말이라는 존재하지 않는 데이터를 모델이 학습할 수 있을까?  
+    - 말 클래스 & 색깔 클래스 두 가지 정보가 존재할 때, 얼룩말이라는 존재하지 않는 데이터를 모델이 학습할 수 있을까?  
   
 ### Meta Learning: Learning to learn
 - Aim to train a model than can rapidly adapt to a new task not used during training with a few examples  
-    - 적은 양의 데이터로부터, 새로운 task를 빠르게 학습할 수 있는 Meta Learner를 학습  
+    - 적은 양의 데이터로부터, 새로운 task를 빠르게 학습할 수 있는 Meta Learner를 학습
     - Few Shot Learning 학습을 잘 하기 위한 모델을 학습  
-    
-    - Transfer Learning(pre-training) 접근법과는 어떻게 다를까?  
+    - Transfer Learning(pre-training) 접근법과는 어떻게 다를까?
         - pre-training은 재사용의 목적!  
         - 일반적으로 상위 layer의 파라미터는 고정하고 세세한 피쳐를 뽑아줄 것이라 기대하는 하위 layer만 업데이트한다.  
         - manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 데이터나 클래스 분류 과제로 이관이 가능하다.  
@@ -42,3 +41,4 @@ tags: [PaperReview, Meta-Learning]
 
 
  
+(PAPER URL) http://proceedings.mlr.press/v70/finn17a/finn17a.pdf
