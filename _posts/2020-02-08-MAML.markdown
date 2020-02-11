@@ -96,7 +96,7 @@ tags: [PaperReview, Meta-Learning]
 - 일반적으로 각 Task가 각자의 model을 갖고, shared layer에서 parameter를 공유하는 구조  
 - MTL은 여러 task들을 동시에 학습하는 것이 각 task의 성능 향상에 도움을 줄 수 있다는 컨셉  
 <br>  
-MTL의 장점은 하나의 task에 over fitting 되는 것을 막는 regularization효과와 다른 task의 유용한 knowledge가 네트워크에 공유되어 학습될 수 있는 것이다. 그러나 이렇게 "주어진 모든 일을 잘 하도록 학습"되는 MTL의 컨셉은 "주어질 어떤 일이든 잘 할 수 있도록 학습"되는 MAML의 컨셉과는 다르게 구분해야한다.  
+MTL의 장점은 하나의 task에 over fitting 되는 것을 막는 regularization효과와 다른 task의 유용한 knowledge가 네트워크에 공유되어 학습될 수 있는 것이다. 그러나 이렇게 "주어진 모든 일을 잘 하도록 학습"되는 MTL의 컨셉은 "주어진 어떤 일에든 빠르게 적응하도록 학습"되는 MAML의 컨셉과는 다르게 구분해야한다.  
   
 <br>
 #### Species of MAML  
