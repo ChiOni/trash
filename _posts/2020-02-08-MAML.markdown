@@ -40,6 +40,7 @@ tags: [PaperReview, Meta-Learning]
 
 ## Few-Shot Learning  
 - k-shot learning: 각 클래스 별, k개(1~5)의 데이터만으로 효과적인 분류가 가능하도록 하는 것  
+  
 - one shot learning:  클래스 별 하나밖에 데이터가 없는데 분류 모델을 수행 → 사람에게 가능하니 모델도 할 수 있겠지!  
 <center><img src="/assets/img/maml/mamlone.jpg"></center>  
 - zero shot learning: 타겟 클래스에 대한 데이터가 전혀 없는채로 모델을 학습  
@@ -74,9 +75,12 @@ tags: [PaperReview, Meta-Learning]
   
 ## 1. Abstract  
 
-모델에 무관한 meta-learning을 가능케 하는 알고리즘을 제안
-- Meta Learning의 목표:
+모델에 무관한 meta-learning을 가능케 하는 알고리즘을 제안  
+  
+- Meta Learning의 목표:  
+  
     - 적은 샘플 트레이닝 데이터로도 새로운 과제를 잘 수행할 수 있도록 모델을 학습
+      
     - 메타 러닝을 통해, 모델의 parameter는 적은 양의 데이터와 역전파만으로도 효율적으로 업데이트된다  
   
 
