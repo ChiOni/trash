@@ -56,6 +56,7 @@ tags: [PaperReview, Meta-Learning]
       
     = Few Shot Learning 학습을 잘 하기 위한 모델을 학습  
       
+      
 #### Transfer Learning(pre-training) 접근법과는 어떻게 다를까?
     
 pre-training은 재사용의 목적!  
@@ -89,16 +90,18 @@ manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 �
 <br/>
 ## 2. Introduction  
 사람이 할 수 있는 일 = 빠르고 유연하게 새로운 것을 학습 & 특정 과제나 노력으로 국한되지 않음  
-
-- Meta Learning:
-MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 적용 가능하다.
   
-궁극적인 목표는 적은 데이터만으로 새로운 과제에 빠르게 적응할 수 있도록 모델을 학습하는 것이다.
+- Meta Learning:  
+  
+MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 적용 가능하다.  
+  
+궁극적인 목표는 적은 데이터만으로 새로운 과제에 빠르게 적응할 수 있도록 모델을 학습하는 것이다.  
   
   - Initial Parameter가 몇 번의 업데이트 만으로 maximal performance를 발휘하도록 학습
     
   - 기존의 연구들과는 달리, 특정 모델 구조에 한정적이거나 parameter를 늘리거나 하지 않는다  
-
+  
+  
 정리하자면 궁극적인 학습의 목적은 여러 과제에 범용적으로 적합하게 internal representation을 설정해 놓는 것이다.  
   
 최적의 포지션에 모델이 설정되있다면 적은 데이터와 학습만으로 수정된 parameter를 통해 좋은 결과를 얻을 것이라 기대할 수 있다.  
@@ -110,7 +113,7 @@ MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 �
 <br/>
 
 ## 3. Model Agnostic Meta-Learning  
-- Meta learning Problem Set-Up  
+#### Meta learning Problem Set-Up  
   
 각 task가 하나의 원소가 되고, {task 집합}이 train set/test set이 된다  
   
@@ -170,8 +173,6 @@ Task의 변화에 민감하게 반응하는 model parameter를 찾자!
 
 <br/>
 
-<br/>
-
 #### 주의할 것은 논문의 Loss가 multi-task learning(MTL)와 같다고 생각하면 안된다는 것이다.    
 <img src="/assets/img/maml/mamlfive.jpg">  
 <b>Multi-task learning loss</b>  
@@ -184,16 +185,12 @@ MTL은 여러 task들을 동시에 학습하는 것이 각 task의 성능 향상
 
 <br/>
 
-<br/>
-
 MTL의 장점은 regularization, knowledge의 공유되어 학습될 수 있는 것이다.  
   
 그러나, "주어진 모든 일을 잘 하도록 학습"되는 MTL의 컨셉은  
   
 "주어진 어떤 일에든 빠르게 적응하도록 학습"되는 MAML의 컨셉과는 다른점이 있다.  
     
-<br/>
-
 <br/>
 
 <br/>
@@ -231,8 +228,6 @@ setting: t 값으로 t+1 값 예측하기
 
 <br/>
 
-<br/>
-
 ## 6. Experimental Evaluation
 - <b>Regression</b>  
   
@@ -261,8 +256,6 @@ meta learner 'f'가 sine wave의 feature를 이미 알고 있기 때문에
 
 <br/>
 
-<br/>
-
 ## 7. Discussion and Future Work  
 논문에서 소개한 meta-learning 접근법은 모델이 굉장히 간단하고 미리 세팅해둬야 할 parameter가 없다. 
   
@@ -281,7 +274,5 @@ meta learner 'f'가 sine wave의 feature를 이미 알고 있기 때문에
 <br/>
 
 <br/>
-
-<br/>  
 (PAPER URL) http://proceedings.mlr.press/v70/finn17a/finn17a.pdf  
   
