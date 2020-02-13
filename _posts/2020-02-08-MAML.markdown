@@ -55,15 +55,15 @@ tags: [PaperReview, Meta-Learning]
       
     = Few Shot Learning 학습을 잘 하기 위한 모델을 학습  
       
-    = Transfer Learning(pre-training) 접근법과는 어떻게 다를까?
+    #### Transfer Learning(pre-training) 접근법과는 어떻게 다를까?
       
-        - pre-training은 재사용의 목적!  
-          
-        - 일반적으로 상위 layer의 파라미터는 고정하고 세세한 피쳐를 뽑아줄 것이라 기대하는 하위 layer만 업데이트한다  
-          
-        - manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 데이터나 클래스 분류 과제로 이관이 가능하다  
-          
-        - 학습하는 방법을 학습하는 컨셉의 메타러닝과는 다르게 transfer learning은 선행 학습!  
+      pre-training은 재사용의 목적!  
+
+      일반적으로 상위 layer의 파라미터는 고정하고 세세한 피쳐를 뽑아줄 것이라 기대하는 하위 layer만 업데이트한다  
+
+      manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 데이터나 클래스 분류 과제로 이관이 가능하다  
+
+      학습하는 방법을 학습하는 컨셉의 메타러닝과는 다르게 transfer learning은 선행 학습!  
   
 <br/>
 
