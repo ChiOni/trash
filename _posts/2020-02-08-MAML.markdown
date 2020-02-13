@@ -43,7 +43,8 @@ tags: [PaperReview, Meta-Learning]
   
 - one shot learning:  클래스 별 하나밖에 데이터가 없는데 분류 모델을 수행 → 사람에게 가능하니 모델도 할 수 있겠지!  
 <center><img src="/assets/img/maml/mamlone.jpg"></center>  
-- zero shot learning: 타겟 클래스에 대한 데이터가 전혀 없는채로 모델을 학습  
+- zero shot learning: 타겟 클래스에 대한 데이터가 전혀 없는채로 모델을 학습 
+  
     - 말 클래스 & 색깔 클래스 두 가지 정보가 존재할 때, 얼룩말이라는 존재하지 않는 데이터를 모델이 학습할 수 있을까?  
 <br/>
 
@@ -57,6 +58,8 @@ tags: [PaperReview, Meta-Learning]
     = Few Shot Learning 학습을 잘 하기 위한 모델을 학습  
       
       
+<br/>
+  
 #### Transfer Learning(pre-training) 접근법과는 어떻게 다를까?
     
 pre-training은 재사용의 목적!  
@@ -92,6 +95,7 @@ manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 �
 사람이 할 수 있는 일 = 빠르고 유연하게 새로운 것을 학습 & 특정 과제나 노력으로 국한되지 않음  
   
 - Meta Learning:  
+<br/>
   
 MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 적용 가능하다.  
   
@@ -100,6 +104,7 @@ MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 �
   - Initial Parameter가 몇 번의 업데이트 만으로 maximal performance를 발휘하도록 학습
     
   - 기존의 연구들과는 달리, 특정 모델 구조에 한정적이거나 parameter를 늘리거나 하지 않는다  
+<br/>
   
   
 정리하자면 궁극적인 학습의 목적은 여러 과제에 범용적으로 적합하게 internal representation을 설정해 놓는 것이다.  
@@ -181,10 +186,6 @@ Task의 변화에 민감하게 반응하는 model parameter를 찾자!
   
 MTL은 여러 task들을 동시에 학습하는 것이 각 task의 성능 향상에 도움을 줄 수 있다는 믿음이라 볼 수 있다.  
   
-<br/>
-
-<br/>
-
 MTL의 장점은 regularization, knowledge의 공유되어 학습될 수 있는 것이다.  
   
 그러나, "주어진 모든 일을 잘 하도록 학습"되는 MTL의 컨셉은  
