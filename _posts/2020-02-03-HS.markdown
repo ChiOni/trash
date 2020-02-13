@@ -64,11 +64,11 @@ Loss가 목적하는 것은 연속적인 "True" 분포에 각 원소가 density�
 
 <br/> 
 
-<center> 𝐷_𝐾𝐿 (𝑃||𝑄)= ∑_(𝑥∈𝑋)〖𝑝(𝑥)∗log⁡((𝑄(𝑥))/(𝑃(𝑥)))〗</center>  
+𝐷_𝐾𝐿 (𝑃||𝑄)= ∑_(𝑥∈𝑋)〖𝑝(𝑥)∗log⁡((𝑄(𝑥))/(𝑃(𝑥)))〗  
   
-<center>= ∑〖𝑝(𝑥)∗log⁡(𝑞(𝑥))〗− ∑〖𝑝(𝑥)∗log⁡(𝑝(𝑥))〗</center> 
+= ∑〖𝑝(𝑥)∗log⁡(𝑞(𝑥))〗− ∑〖𝑝(𝑥)∗log⁡(𝑝(𝑥))〗  
   
-<center>= 𝐻(𝑃,𝑄) − 𝐻(𝑃) </center>  
+= 𝐻(𝑃,𝑄) − 𝐻(𝑃)  
   
 <br/> 
 <b style="text-align: center;">우리는 Q에 대한 Gradient를 사용할 것이니 Seconde Term은 버린다</b>  
