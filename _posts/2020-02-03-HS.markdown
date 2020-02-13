@@ -73,17 +73,17 @@ Loss가 목적하는 것은 연속적인 "True" 분포에 각 원소가 density�
 <br/> 
 <b style="text-align: center;">우리는 Q에 대한 Gradient를 사용할 것이니 Seconde Term은 버린다</b>  
   
-<center>= −∫〖𝑝(𝑦)∗log⁡(𝑞_𝑥 (𝑦))𝑑𝑦〗</center>  
+= −∫〖𝑝(𝑦)∗log⁡(𝑞_𝑥 (𝑦))𝑑𝑦〗    
   
-<center>= −∑ ∫〖𝑝(𝑦)∗log⁡〖(𝑓_𝑖 (𝑥))/𝑤_𝑖 〗𝑑𝑦〗</center>  
+= −∑ ∫〖𝑝(𝑦)∗log⁡〖(𝑓_𝑖 (𝑥))/𝑤_𝑖 〗𝑑𝑦〗  
   
 <b style="text-align: center;">우리의 아웃풋 분포 Q는 히스토그램이므로 integral이 아닌 시그마 형태로 바꿀 수 있다</b>  
   
-<center>= −∑log⁡〖(𝑓_𝑖 (𝑥))/𝑤_𝑖 〗*(𝐹(𝑙_𝑖 + 𝑤_𝑖)− 𝐹(𝑙_𝑖))</center>  
+= −∑log⁡〖(𝑓_𝑖 (𝑥))/𝑤_𝑖 〗*(𝐹(𝑙_𝑖 + 𝑤_𝑖)− 𝐹(𝑙_𝑖))    
   
 <b style="text-align: center;">우리의 타겟 분포 P는 연속이기 때문에 integral 속의 p를 cdf를 사용하여 표현한다</b>  
   
-<center>≈ −∑𝑝_𝑖 *log(𝑓_𝑖 (𝑥)) </center>  
+≈ −∑𝑝_𝑖 *log(𝑓_𝑖 (𝑥))  
   
 <b style="text-align: center;">히스토그램 bin의 width인 w는 상수이므로 버리고나면 히스토그램 로스는 k개의 이산적인 entropy 꼴이 된다</b>  
   
