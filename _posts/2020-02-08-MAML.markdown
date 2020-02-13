@@ -77,7 +77,7 @@ manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 �
 
 <br/>    
   
-## 1. Abstract  
+## 1.  Abstract  
 
 모델에 무관한 meta-learning을 가능케 하는 알고리즘을 제안  
   
@@ -91,7 +91,7 @@ manifold가 유사한 이미지에 대해 이미 학습이 선행되어 다른 �
 <br/>
 
 <br/>
-## 2. Introduction  
+## 2.  Introduction  
 사람이 할 수 있는 일 = 빠르고 유연하게 새로운 것을 학습 & 특정 과제나 노력으로 국한되지 않음  
   
 - Meta Learning:  
@@ -117,7 +117,7 @@ MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 �
 
 <br/>
 
-## 3. Model Agnostic Meta-Learning  
+## 3.  Model Agnostic Meta-Learning  
 #### Meta learning Problem Set-Up  
   
 각 task가 하나의 원소가 되고, {task 집합}이 train set/test set이 된다  
@@ -138,7 +138,7 @@ MAML 모델은 Gradient Descent procedure로 학습되는 어떤 문제에도 �
 
 <br/>
 
-## 4. A Model-Agnostic Meta-Learning Algorithm  
+## 4.  A Model-Agnostic Meta-Learning Algorithm  
 Task의 변화에 민감하게 반응하는 model parameter를 찾자!  
 
 #### 기대하는 바  
@@ -196,7 +196,7 @@ MTL의 장점은 regularization, knowledge의 공유되어 학습될 수 있는 
 
 <br/>
 
-## 5. Species of MAML  
+## 5.  Species of MAML  
 해당 논문에서는 3가지 종류의 Task를 다룬다 (regression, classification, reinforcement learning).  
   
 컨셉은 모두 동일하고 loss만 task에 적합한 형태로 바뀌기 때문에 해당 리뷰에는 Regression만 다루도록 한다.  
@@ -229,7 +229,7 @@ setting: t 값으로 t+1 값 예측하기
 
 <br/>
 
-## 6. Experimental Evaluation
+## 6.  Experimental Evaluation
 - <b>Regression</b>  
   
     - P(t) = continuous sine wave  
@@ -257,7 +257,7 @@ meta learner 'f'가 sine wave의 feature를 이미 알고 있기 때문에
 
 <br/>
 
-## 7. Discussion and Future Work  
+## 7.  Discussion and Future Work  
 논문에서 소개한 meta-learning 접근법은 모델이 굉장히 간단하고 미리 세팅해둬야 할 parameter가 없다. 
   
 따라서 gradient-based의 모든 task에 적용 가능하기 때문에 아주 활용성이 높을 것이다.  
