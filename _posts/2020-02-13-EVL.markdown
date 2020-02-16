@@ -11,3 +11,39 @@ tags: [PaperReview, Distiributional Losses, Time Series]
 <br/>
 
 <br/>
+
+최근의 연구들에서 범용적으로 사용된던 quadratic loss의 한계점을 지적하는 경우가 많다.  
+  
+해당 논문은 기존 로스의 한계점을 꽤 논리적으로 분석했고 그럴듯한 대안을 제시한다.  
+    
+저자가 수학적 조예가 깊은 사람이라 읽는데 조금 어려움은 있었지만 접근법과 성능면에서 분명 읽을 가치가 있는 논문이다.  
+  
+여기서 제안된 <b>Extreme Valuee Loss</b>는 risk management 분야에서 자주 등장하는 EVT(extreme value theorem)에 기초하고 있다.  
+  
+따라서 논문을 읽기 앞서 GRU(gate recurrent unit), EVT, Binary Cross Entropy의 개념을 보고 온다면 좋을 것 같다.  
+  
+<br/>
+
+<br/>
+
+## 00.  Paper Summary  
+<br/>  
+#### Contribution 01.  
+Formal analysis on why deep neural network suffers extreme problems during predicting time series data with extreme value  
+<br/>  
+#### Contribution 02.  
+Propose a novel loss function called Extreme Value Loss (EVL) based on extreme value theory  
+<br/>  
+#### Contribution 03.  
+Propose a brand-new Memory Network based neural architecture to memorize extreme events in history  
+
+<br/>
+
+<br/>
+
+
+
+
+
+
+
