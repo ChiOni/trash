@@ -12,7 +12,7 @@ tags: [PaperReview, Distiributional Losses, Time Series]
 
 <br/>
 
-최근의 연구들에서 범용적으로 사용된던 quadratic loss의 한계점을 지적하는 경우가 많다.  
+최근의 연구들에서 범용적으로 사용되던 quadratic loss의 한계점을 지적하는 경우가 많다.  
   
 해당 논문은 기존 로스의 한계점을 꽤 논리적으로 분석했고 그럴듯한 대안을 제시한다.  
     
