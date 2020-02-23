@@ -171,6 +171,7 @@ import matplotlib.pyplot as plt
   
 #### Handling  
 ```python
+
 train_dataset = datasets.MNIST(root = './data', train = True, transform  = transforms.ToTensor(), download = True)
 test_dataset = datasets.MNIST(root = './data', train = False, transform = transforms.ToTensor())
 
@@ -211,6 +212,7 @@ Denosing을 추가하거나 feature extraction을 convolution한 기법을 통�
 그 중 오늘 실습에서는 기본 버젼의 모델과 ConvAutoEncoder를 구현해본다.  
   
 ```python
+
 class AutoEncoder(nn.Module):
   def __init__(self, input_dim, hidden_dim1, hidden_dim2):
     super(AutoEncoder, self).__init__()
@@ -273,6 +275,7 @@ ConvAutoEncoder에서는 padding 사이즈를 늘렸다 줄임으로서 Dimensio
 <br/>
 #### Train - func
 ```python
+
 def train(model, Loss, optimizer, num_epochs):
   train_loss_arr = []
   test_loss_arr = []
@@ -342,6 +345,7 @@ Validation Set은 따로 설정해주지 않고 test data에 대해서 early sto
 불행하게도 여기 환경에는 gpu가 없는 관계로 나의 device는 cpu가 된다.  
   
 ```python
+
 AE = AutoEncoder(28 * 28, 64, 32)
 AE_loss = nn.MSELoss()
 
@@ -368,6 +372,7 @@ train(CAE, CAE_loss, CAE_optimizer, num_epochs)
 우리는 이제 모델에 5를 넣었을때는 error가 적고, 5가 아닌 숫자를 넣었을때는 error가 클 것이라 기대할 수 있다.  
   
 ```python
+
 AE_normal,AE_anomal = [], []
 CAE_normal,CAE_anomal = [], []
 
@@ -398,6 +403,7 @@ Loss에 대한 히스토그램과 Confusion Matrix를 만드는 함수는 따로
 AE의 threshold를 0.02로, CAE의 threshold를 0.002로 설정한다.  
 <br/>
 ```python
+
 y_true = []
 AE_y_pred, CAE_y_pred = [],[]
 
