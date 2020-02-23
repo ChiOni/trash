@@ -3,7 +3,7 @@ layout: post
 title: Why Should I Trust You? (KDD 2016)
 date: 2020-01-29 00:00:00 +0000
 description: Expaining the Predictions of Any Classifier
-img: /lime/profile.jpg # Add image post (optional)
+img: /pr/lime/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 categories: [PR]
 tags: [PaperReview, ExplainableAI]
@@ -34,7 +34,7 @@ tags: [PaperReview, ExplainableAI]
 <br/>
 
 <br/>
-<center><img src="/assets/img/lime/limeone.jpg"></center>
+<center><img src="/assets/img/pr/lime/limeone.jpg"></center>
 <br/>
 - 메일의 수신자가 기독교인지 무교인지 구별하는 과제  
   
@@ -44,7 +44,7 @@ tags: [PaperReview, ExplainableAI]
   
 <br/>
 
-<center><img src="/assets/img/lime/limetwo.jpg"></center>
+<center><img src="/assets/img/pr/lime/limetwo.jpg"></center>
 <br/>
 
 - Flu가 정답이라는 근거는 sneeze / headache  
@@ -82,7 +82,7 @@ tags: [PaperReview, ExplainableAI]
 <br/>
 
 <br/>
-<center><img src="/assets/img/lime/limethree.jpg"></center>
+<center><img src="/assets/img/pr/lime/limethree.jpg"></center>
 <br/>
 
 2차원의 한 점을 찍어 그 점이 빨강인지 파랑인지 분류하는 문제가 있다.  
@@ -140,7 +140,7 @@ z(3)은 3번째 원소와 5번째 슈퍼픽셀이 있었어야 할 부분이 회
   
 #### 4. 복잡한 모델과 유사한 결과물을 내는 간단한 모델을 만든다.  
   
-<center><img src="/assets/img/lime/limefour.jpg"></center>  
+<center><img src="/assets/img/pr/lime/limefour.jpg"></center>  
   
 쉬운 모델의 학습을 이해하기 위한 유일한 수식.  
   
@@ -156,7 +156,7 @@ z(3)은 3번째 원소와 5번째 슈퍼픽셀이 있었어야 할 부분이 회
 <br/>
 
 <br/>
-<center><img src="/assets/img/lime/limefive.jpg"></center> 
+<center><img src="/assets/img/pr/lime/limefive.jpg"></center> 
   
 아직도 납득이 가지 않은 나를 위한 논문에서 제공한 아주 직관적인 예시가 있다.  
 
