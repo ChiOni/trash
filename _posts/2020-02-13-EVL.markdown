@@ -5,7 +5,7 @@ date: 2020-02-13 00:00:00 +0000
 description: Extreme Valuee Loss
 img: /evl/profile.jpg 
 fig-caption:   
-categories: [PAPER_REVIEW]
+categories: [PR]
 tags: [PaperReview, Distiributional Losses, Time Series]
 
 ---
