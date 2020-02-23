@@ -96,14 +96,44 @@ PCA는 Encoder 부분이 w이고 Decoder 부분이 그 역행렬인 가장 간�
   
 <b>정리하자면 오토인코더는 고차원 데이터의 Non Linear Dimensionality Reduction을 위해 사용된다.</b>  
   
-<br/>
+<br/>  
 #### 그러면 오토인코더는 어디에 쓸 수 있을까?  
   
 가장 쉽게 오토인코더의 예제를 찾을 수 있는 것은 Anomaly Detection 분야이다.  
   
-
+Anomal Data에 대한 가정은, Normal 데이터에 공통적으로 존재하는 feature가 그들에게 존재하지 않는다는 것이다.  
   
+예를 들어, 금융 거래 데이터를 가지고 금융 사기범과 일반인을 구별하는 과제가 있다고 생각해보자.  
+  
+과거에는 이런 과제를 아주 휴리스틱한 룰 베이스의 시스템을 통해 수행해왔다.  
+  
+골프장에서 거래내역이 있으면 일반인, 월급 통장이 있으면 정상인, 이런 규칙들을 정해놓고 O / X 로 분류를 수행했다.  
+  
+이런 룰 하나 하나가 anomal 데이터에는 존재하지 않는 normal 데이터의 feature라 볼 수 있다.  
+  
+이것을 오토인코더의 관점에서 생각해보자, 모델은 input을 잘 reconstuction 하는 방향으로 학습된다.  
+  
+따라서 정상인의 데이터만으로 모델을 학습시킨다면 Encoder 네트워크는  
+  
+Latent Vector Space에 정상 데이터의 공통적인 Feature들이 잘 함축되도록 업데이트 될 것이다.  
+  
+그렇다면 학습이 완료된 모델에 anomal 데이터가 들어왔을 때, anomal 데이터에는 그런 Feature들이 없으니 재구성에 실패할 것이다.  
 
+<br/>
+
+정리하자면 오토인코더를 통한 Anomaly Detection의 학습 전략은 이렇다.  
+  
+<p style="text-indent :5em;" >(1) Encoder - Decoder로 이루어진 네트워크를 설계한다</p>  
+  
+<p style="text-indent :5em;" >(2) 모델에 normal 데이터를 잔뜩 집어넣고 Reconstrucion Loss를 최소화하도록 업데이트한다</p>  
+  
+<p style="text-indent :5em;" >(3) 적절한 Threshold를 설정하고 새로운 데이터의 에러가 임계값을 초과하면 Anomal Data로 분류한다</p>  
+   
+<br/>  
+  
+<br/>  
+
+## 04. MNIST Aanomaly Detection
 
 
 
