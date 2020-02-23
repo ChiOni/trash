@@ -3,9 +3,11 @@ layout: post
 title: Modeling Extreme Events in Time Series Prediction (KDD 2019)
 date: 2020-02-13 00:00:00 +0000
 description: Extreme Valuee Loss
-img: /evl/profile.jpg # Add image post (optional)
-fig-caption: # Add figcaption (optional)
+img: /evl/profile.jpg 
+fig-caption:   
+categories: [PAPER_REVIEW]
 tags: [PaperReview, Distiributional Losses, Time Series]
+
 ---
 
 <br/>
