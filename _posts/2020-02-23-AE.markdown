@@ -128,25 +128,320 @@ Latent Vector Space에 정상 데이터의 공통적인 Feature들이 잘 함축
 
 <br/>
 
-정리하자면 오토인코더를 통한 Anomaly Detection의 학습 전략은 이렇다.  
+<b>정리하자면 오토인코더를 통한 Anomaly Detection의 학습 전략은 이렇다.</b>  
   
-<p style="text-indent :5em;" >(1) Encoder - Decoder로 이루어진 네트워크를 설계한다</p>  
+<p style="text-indent :3em;" >(1) Encoder - Decoder로 이루어진 네트워크를 설계한다</p>  
   
-<p style="text-indent :5em;" >(2) 모델에 normal 데이터를 잔뜩 집어넣고 Reconstrucion Loss를 최소화하도록 업데이트한다</p>  
+<p style="text-indent :3em;" >(2) 모델에 normal 데이터를 잔뜩 집어넣고 Reconstrucion Loss를 최소화하도록 업데이트한다</p>  
   
-<p style="text-indent :5em;" >(3) 적절한 Threshold를 설정하고 새로운 데이터의 에러가 임계값을 초과하면 Anomal Data로 분류한다</p>  
+<p style="text-indent :3em;" >(3) 적절한 Threshold를 설정하고 새로운 데이터의 에러가 임계값을 초과하면 Anomal Data로 분류한다</p>  
    
 <br/>  
   
 <br/>  
 
-## 04. MNIST Aanomaly Detection
-
-
-
+## 04. MNIST Aanomaly Detection  
+#### MNIST Database  
+<br/>
+0 ~ 9가 손글씨로 저장된 train 6만, test 1만 크기의 Database.  
+<br/>
+#### Experiment Setting  
+<br/>
+전체 숫자 중에 5와 나머지 숫자를 구별하고 싶다.  
   
+5가 Normal, 5를 제외한 나머지 숫자를 모두 Anomal로 정의하고 Anomaly Detection 과제를 수행한다.  
+<br/>
+## 05. Programming  
+<br/>
+#### Libraries
+```python
+import torch 
+import torch.nn as nn
+import torch.nn.functional as F
+import torch.optim as optim
 
+from torchvision import datasets, transforms
+import torchvision.models as models
+
+import numpy as np
+from random import sample
+import matplotlib.pyplot as plt
+```
+<br/>
   
+#### Handling  
+```python
+train_dataset = datasets.MNIST(root = './data', train = True, transform  = transforms.ToTensor(), download = True)
+test_dataset = datasets.MNIST(root = './data', train = False, transform = transforms.ToTensor())
+
+total_dataset = torch.utils.data.ConcatDataset([train_dataset, test_dataset])
 
 
+# 데이터 중에서 5인 것과 아닌 것을 구별하자
+normal_dataset = sample([total_dataset.__getitem__(idx) for idx in range(len(total_dataset)) 
+                  if total_dataset.__getitem__(idx)[1] == 5], 6000)
 
+anomal_dataset = sample([total_dataset.__getitem__(idx) for idx in range(len(total_dataset))
+                   if total_dataset.__getitem__(idx)[1] != 5], 1500)
+
+
+# 모델을 학습할 때 완전히 5인 것만 학습하지 않고 다른 라벨도 조금 섞어줘서 semi-supervised하게 모델을 학습해주자
+train_size, test_size = 5000, 500
+
+train_dataset = normal_dataset[:train_size]
+anomal_train = anomal_dataset[:test_size]
+train_dataset.extend(anomal_train)
+
+test_dataset = normal_dataset[train_size:]
+anomal_test = anomal_dataset[test_size:]
+test_dataset.extend(anomal_test)
+
+batch_size = 512
+
+train_loader = torch.utils.data.DataLoader(dataset = train_dataset, batch_size = batch_size, shuffle = True)
+test_loader = torch.utils.data.DataLoader(dataset = test_dataset, batch_size = batch_size, shuffle = False)
+```
+<br/>
+  
+#### Modeling   
+<br/>  
+가장 기본적인 오토인코더는 단순히 멀티 레이어 퍼셉트론의 노드를 구조적으로 줄였다 늘린 것 뿐이지만  
+  
+Denosing을 추가하거나 feature extraction을 convolution한 기법을 통해 수행하는 등의 여러 변형이 존재한다.  
+  
+그 중 오늘 실습에서는 기본 버젼의 모델과 ConvAutoEncoder를 구현해본다.  
+  
+```python
+class AutoEncoder(nn.Module):
+  def __init__(self, input_dim, hidden_dim1, hidden_dim2):
+    super(AutoEncoder, self).__init__()
+    
+    self.encoder = nn.Sequential(
+      nn.Linear(input_dim, hidden_dim1),
+      nn.ReLU(),
+      nn.Linear(hidden_dim1, hidden_dim2),
+      nn.ReLU()
+    )
+    
+    self.decoder = nn.Sequential(
+      nn.Linear(hidden_dim2, hidden_dim1),
+      nn.ReLU(),
+      nn.Linear(hidden_dim1, input_dim),
+      nn.ReLU()
+    )
+  
+  def forward(self, x):
+    out = x.view(x.size(0), -1)
+    out = self.encoder(out)
+    out = self.decoder(out)
+    out = out.view(x.size())
+    return out
+  
+  def get_codes(self, x):
+    return self.encoder(x)
+
+class ConvAutoEncoder(nn.Module):
+  def __init__(self):
+    super(ConvAutoEncoder, self).__init__()
+    
+    self.encoder = nn.Sequential(
+      nn.Conv2d(1, 3, kernel_size = 5),
+      nn.ReLU(),
+      nn.Conv2d(3, 5, kernel_size = 5),
+      nn.ReLU()
+    )
+    
+    self.decoder = nn.Sequential(
+      nn.ConvTranspose2d(5, 3, kernel_size = 5),
+      nn.ReLU(),
+      nn.ConvTranspose2d(3, 1, kernel_size = 5),
+      nn.ReLU()
+    )
+    
+  def forward(self, x):
+    out = self.encoder(x)
+    out = self.decoder(out)
+    return out
+
+  def get_codes(self, x):
+    return self.encoder(x)
+```
+<br/>
+여기서 get_codes 함수를 통해 Input의 Latent Vector를 추출할 수 있다.  
+  
+ConvAutoEncoder에서는 padding 사이즈를 늘렸다 줄임으로서 Dimension을 조절할 수 있다.  
+  
+<br/>
+#### Train - func
+```python
+def train(model, Loss, optimizer, num_epochs):
+  train_loss_arr = []
+  test_loss_arr = []
+
+  best_test_loss = 99999999
+  early_stop, early_stop_max = 0., 3.
+
+  for epoch in range(num_epochs):
+
+    epoch_loss = 0.
+    for batch_X, _ in train_loader:
+      
+      batch_X = batch_X.to(device)
+      optimizer.zero_grad()
+
+      # Forward Pass
+      model.train()
+      outputs = model(batch_X)
+      train_loss = Loss(outputs, batch_X)
+      epoch_loss += train_loss.data
+
+      # Backward and optimize
+      train_loss.backward()
+      optimizer.step()
+
+    train_loss_arr.append(epoch_loss / len(train_loader.dataset))
+
+    if epoch % 10 == 0:
+      model.eval()
+
+      test_loss = 0.
+
+      for batch_X, _ in test_loader:
+        batch_X = batch_X.to(device)
+
+        # Forward Pass
+        outputs = model(batch_X)
+        batch_loss = Loss(outputs, batch_X)
+        test_loss += batch_loss.data
+
+      test_loss = test_loss
+      test_loss_arr.append(test_loss)
+
+      if best_test_loss > test_loss:
+          best_test_loss = test_loss
+          early_stop = 0
+
+          print('Epoch [{}/{}], Train Loss: {:.4f}, Test Loss: {:.4f} *'.format(epoch, num_epochs, epoch_loss, test_loss))
+      else:
+          early_stop += 1
+          print('Epoch [{}/{}], Train Loss: {:.4f}, Test Loss: {:.4f}'.format(epoch, num_epochs, epoch_loss, test_loss))   
+
+    if early_stop >= early_stop_max:
+        break
+```
+<br/>
+모델이 여러개니 학습 함수를 미리 설정해준다.  
+  
+Validation Set은 따로 설정해주지 않고 test data에 대해서 early stop을 넣어준다.  
+  
+결과물을 10 epoch을 수행할때마다 확인해주도록 하자.  
+  
+<br/>
+#### Train - ing
+<br/>
+배치 사이즈는 위에서 미리 설정해줬으니 이제 num_epochs, device, learning_rate 세 개만 설정해준다.  
+  
+불행하게도 여기 환경에는 gpu가 없는 관계로 나의 device는 cpu가 된다.  
+  
+```python
+AE = AutoEncoder(28 * 28, 64, 32)
+AE_loss = nn.MSELoss()
+
+CAE = ConvAutoEncoder()
+CAE_loss = nn.MSELoss()
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+AE = AE.to(device)
+CAE = CAE.to(device)
+
+learning_rate = 0.01
+
+AE_optimizer = optim.Adam(AE.parameters(), lr=learning_rate)
+CAE_optimizer = optim.Adam(CAE.parameters(), lr=learning_rate)
+
+train(AE, AE_loss, AE_optimizer, num_epochs)
+train(CAE, CAE_loss, CAE_optimizer, num_epochs)
+```
+<br/>
+  
+#### Result  
+<br/>  
+모델이 숫자 5의 feature extraction과 reconstrucion을 잘하도록 학습됬으니  
+  
+우리는 이제 모델에 5를 넣었을때는 error가 적고, 5가 아닌 숫자를 넣었을때는 error가 클 것이라 기대할 수 있다.  
+  
+```python
+AE_normal,AE_anomal = [], []
+CAE_normal,CAE_anomal = [], []
+
+for X, _ in normal_test:
+  X = X.to(device)
+
+  # Forward Pass
+  AE_output = AE(X)
+  CAE_output = CAE(X.view((1,1,28,28)))
+  
+  if _ == 5: 
+    AE_normal.append(AE_loss(AE_output, X).item())
+    CAE_normal.append(CAE_loss(CAE_output.view(1,28,28), X).item())
+  else: 
+    AE_anomal.append(AE_loss(AE_output, X).item())
+    CAE_anomal.append(CAE_loss(CAE_output.view(1,28,28), X).item())
+```
+  
+Loss에 대한 히스토그램과 Confusion Matrix를 만드는 함수는 따로 첨부하지 않는다.  
+  
+<br/>
+<center><img src="/assets/img/pe/ae/aeseven.jpg"></center>
+<br/>
+재밌게도 noraml과 anomal의 Reconstrucion Error 자체는 convAutoEncoder가 월등히 우월했지만  
+  
+너무 잘하는 탓일까 anomal을 구분할 수 있는 명확한 threshold를 설정하는 일이 쉽지 않다.  
+  
+AE의 threshold를 0.02로, CAE의 threshold를 0.002로 설정한다.  
+<br/>
+```python
+y_true = []
+AE_y_pred, CAE_y_pred = [],[]
+
+for X, _ in normal_test:
+  X = X.to(device)
+
+  # Forward Pass
+  AE_output, CAE_output = AE(X), CAE(X.view((1,1,28,28)))
+  
+  if _ == 5: y_true.append(1)
+  else: y_true.append(0)
+    
+  if AE_loss(AE_output, X).item() < 0.02: AE_y_pred.append(1)
+  else: AE_y_pred.append(0)
+
+  if CAE_loss(CAE_output.view(1,28,28), X).item() < 0.002: CAE_y_pred.append(1)
+  else: CAE_y_pred.append(0)
+```
+<br/>  
+임계값에 따라 정상1, 이상0으로 구별하여 Confusion Matrix를 그려보고 F1 Score도 구해본다  
+  
+<br/>
+<center><img src="/assets/img/pe/ae/aeeight.jpg"></center>
+<br/>
+임계값을 어떻게 조정해주느냐에 따라 성능의 향상이 조금은 더 있겠지만 무의미하니 Pass  
+  
+최종적으로 AE의 F1 Score는 0.76, CAE는 0.69로 나왔다.  
+  
+이런 결과의 이유를 조금 생각해보자면, 5라는 숫자가 0~9의 feature들을 조금씩 뭔가 다 포함하고 있어서  
+  
+feature extraction에 너무 우수한 CAE가 5가 아닌 숫자에 대해서도 학습 과정에 Feature들을 다 파악해버린 것 아닌가 싶다.  
+  
+그래서 이 다음에는 5가 아니라 1을 Normal로 정의하고 똑같은 방법으로 실험을 해보았는데,  
+  
+<br/>
+<center><img src="/assets/img/pe/ae/aenine.jpg"></center>
+<br/>
+AE가 끝내주는 분류 성능을 보여줬다. (F1 score 0.96)  
+  
+그리고 CAE는 Classfication에서도 Reconstrucion에서도 갑자기 AE에 대비하여 당황스러울 정도로 멍청해졌는데  
+  
+1에는 feature라 할만한 특이점이 별로 없어서가 아닐까 추측해본다.  
+  
+<b>끝</
