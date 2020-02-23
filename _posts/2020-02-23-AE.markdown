@@ -89,6 +89,8 @@ Decoder 부분을 생각해보면 모델은 낮은 차원의 벡터로 높은 �
 즉, 모델의 Encoder 부분은 고차원의 데이터를 저차원으로 사영하는 Dimensional Reduction 네트워크인 것이다.  
   
 <br/>
+<center><img src="/assets/img/pe/ae/aefive.jpg"></center>
+<br/>
 
 PCA는 Encoder 부분이 w이고 Decoder 부분이 그 역행렬인 가장 간단한 형태의 오토인코더 모델이라고 볼 수 있다.  
   
