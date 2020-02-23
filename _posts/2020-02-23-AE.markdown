@@ -204,7 +204,6 @@ test_loader = torch.utils.data.DataLoader(dataset = test_dataset, batch_size = b
 <br/>
   
 #### Modeling   
-<br/>  
 가장 기본적인 오토인코더는 단순히 멀티 레이어 퍼셉트론의 노드를 구조적으로 줄였다 늘린 것 뿐이지만  
   
 Denosing을 추가하거나 feature extraction을 convolution한 기법을 통해 수행하는 등의 여러 변형이 존재한다.  
@@ -337,8 +336,7 @@ Validation Set은 따로 설정해주지 않고 test data에 대해서 early sto
 결과물을 10 epoch을 수행할때마다 확인해주도록 하자.  
   
 <br/>
-#### Train - ing
-<br/>
+#### Train - ing  
 배치 사이즈는 위에서 미리 설정해줬으니 이제 num_epochs, device, learning_rate 세 개만 설정해준다.  
   
 불행하게도 여기 환경에는 gpu가 없는 관계로 나의 device는 cpu가 된다.  
@@ -365,7 +363,6 @@ train(CAE, CAE_loss, CAE_optimizer, num_epochs)
 <br/>
   
 #### Result  
-<br/>  
 모델이 숫자 5의 feature extraction과 reconstrucion을 잘하도록 학습됬으니  
   
 우리는 이제 모델에 5를 넣었을때는 error가 적고, 5가 아닌 숫자를 넣었을때는 error가 클 것이라 기대할 수 있다.  
@@ -443,5 +440,5 @@ AE가 끝내주는 분류 성능을 보여줬다. (F1 score 0.96)
 그리고 CAE는 Classfication에서도 Reconstrucion에서도 갑자기 AE에 대비하여 당황스러울 정도로 멍청해졌는데  
   
 1에는 feature라 할만한 특이점이 별로 없어서가 아닐까 추측해본다.  
-  
+<br/>
 <b>끝</b>
