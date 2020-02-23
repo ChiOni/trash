@@ -72,7 +72,7 @@ PCA의 주어진 과제는 사영 후 분산을 최대화하는 w를 찾는 것�
   
 원래의 숫자 덩어리 형태를 그대로 잘 유지할 수 있도록 모델은 학습된다.
 <br/>
-<center><img src="/assets/img/pe/ae/aefour.jpg"></center>
+<center><img src="/assets/img/pe/ae/aesix.jpg"></center>
 <br/>
   
 #### 그런데 오토인코더는 왜 쓰는 것일까?  
