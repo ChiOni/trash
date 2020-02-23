@@ -16,16 +16,16 @@ tags: [Code Excercise, Auto Encoder, Anomaly Detection]
 <br/>
 그저 데이터가 크고 복잡하면 도움이 될 것이라는 막연한 믿음은 여러 실험과 연구를 통해 부정당했다.  
   
-단순히 저장과 처리가 힘들다는 문제 이외에, 데이터의 sparse가 커진다는 문제는 차원의 저주라는 그로스크한 이름으로 관찰의 대상이었는데  
+단순히 처리가 힘들다는 문제 이외에도 데이터의 sparse가 커진다는 문제는 차원의 저주라는 그로스크한 이름으로 관찰의 대상이었는데  
   
 고차원의 데이터를 저차원으로 압축시켜 이런 문제를 해결하는 과제가 Dimensional Reduction Task이다.  
 <br/>  
 <center><img src="/assets/img/pe/ae/aeone.jpg"></center>
 <center><small>차원이 커질수록 데이터가 차지하는 부분이 작아진다</small></center>
 <br/>
-Dimensional Reduction은 고전적으로 feature selection 이라는 과제와 동치로 여겨졌는데 Lasson Regression과 같은 것이 그 중 하나이다.  
+차원 축소는 고전적으로 feature selection 과제와 동치로 여겨졌는데 Lasson Regression과 같은 것이 그 중 하나이다.  
   
-최근에는 일부를 고르는 것이 아니라 전부를 대표할 수 있는 저차원의 정보를 뽑는다는 컨셉의 Latent Feature Extraction이 많이 사용된다.  
+최근에는 일부를 고르는 것이 아니라 전부를 대표하는 저차원의 정보를 뽑는 컨셉의 Latent Feature Extraction이 많이 사용된다.  
   
 그리고 오늘은 그 중 딥러닝 모델에서 Latent Feature Extraction에 가장 범용적으로 사용되는 AutoEncoder를 구현해 보고자 한다.  
 <br/>
@@ -41,6 +41,7 @@ Dimensional Reduction은 고전적으로 feature selection 이라는 과제와 �
 한글로는 주성분분석이라 불리우는 PCA는 데이터를 잘 표현하는 '축'을 찾는 기법이다.  
   
 어렵게 말해보자면 mapping 이후 가장 큰 분산을 갖게 하는 unit vector 꼴의 orthogonal linear transformation을 찾는 기법이다.
+<br/>
 <br/>  
 <center><img src="/assets/img/pe/ae/aetwo.jpg"></center>
 <br/>
@@ -111,7 +112,11 @@ Anomal Data에 대한 가정은, Normal 데이터에 공통적으로 존재하�
   
 골프장에서 거래내역이 있으면 일반인, 월급 통장이 있으면 정상인, 이런 규칙들을 정해놓고 O / X 로 분류를 수행했다.  
   
-이런 룰 하나 하나가 anomal 데이터에는 존재하지 않는 normal 데이터의 feature라 볼 수 있다.  
+이런 룰 하나 하나가 anomal 데이터에는 존재하지 않는 normal 데이터의 feature라 볼 수 있다.
+<br/>
+<center><img src="/assets/img/pe/ae/aefraud.jpg"></center>
+<br/>
+<br/>
   
 이것을 오토인코더의 관점에서 생각해보자, 모델은 input을 잘 reconstuction 하는 방향으로 학습된다.  
   
