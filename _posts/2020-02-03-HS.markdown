@@ -3,7 +3,7 @@ layout: post
 title: Improving regression performance with distributional losses (ICML 2018)
 date: 2020-02-03 00:00:00 +0000
 description: Histogram Loss
-img: /hs/profile.jpg # Add image post (optional)
+img: /pr/hs/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 catagories: [PR]
 tags: [PaperReview, Distiributional Losses]
@@ -54,7 +54,7 @@ Soft Target을 사용하는 방법에는 단순히 노이즈를 추가하거나,
 <br/>
 
 <br/> 
-<center><img src="/assets/img/hs/hsone.jpg"></center>  
+<center><img src="/assets/img/pr/hs/hsone.jpg"></center>  
 <br/>  
 불행하게도 논문에서는 직관적으로 이것을 이해시켜줄 어떤 그림도 없다.  
   
@@ -110,7 +110,7 @@ Teacher Model이 존재하는 Classfication Task라면 soft label을 True P로 �
 <br/>
 
 <br/>
-<center><img src="/assets/img/hs/hstwo.jpg"></center>  
+<center><img src="/assets/img/pr/hs/hstwo.jpg"></center>  
 <br>  
 
 위와 같이 Truncated 정규 분포의 확률 값 p(i)를 구할 수 있는데,  
@@ -133,7 +133,7 @@ Loss의 Upper Bound가 작을수록 빠르게 수렴한다는 것이 15년도 �
 <br/>
 
 <br/>
-<center><img src="/assets/img/hs/hsthree.jpg"></center>  
+<center><img src="/assets/img/pr/hs/hsthree.jpg"></center>  
 <br/>
 
 <br/> 
@@ -152,7 +152,7 @@ HS의 것은 커봤자 1을 넘을 수 없지만 MSE의 로스는 매우매우 �
 
 <br/> 
   
-<center><img src="/assets/img/hs/hsfour.jpg"></center>  
+<center><img src="/assets/img/pr/hs/hsfour.jpg"></center>  
 <br/>
 
 위의 실험이 그것을 증명하는데,  
