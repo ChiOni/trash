@@ -5,6 +5,7 @@ date: 2020-02-08 00:00:00 +0000
 description: Meta Learning
 img: /maml/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
+categories: [PAPER_REVIEW]
 tags: [PaperReview, Meta-Learning]
 ---
 
