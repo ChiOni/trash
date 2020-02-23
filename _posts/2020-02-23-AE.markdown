@@ -114,8 +114,7 @@ Anomal Data에 대한 가정은, Normal 데이터에 공통적으로 존재하�
   
 이런 룰 하나 하나가 anomal 데이터에는 존재하지 않는 normal 데이터의 feature라 볼 수 있다.
 <br/>
-<center><img src="/assets/img/pe/ae/aefraud.jpg"></center>
-<br/>
+
 <br/>
   
 이것을 오토인코더의 관점에서 생각해보자, 모델은 input을 잘 reconstuction 하는 방향으로 학습된다.  
@@ -155,6 +154,7 @@ Latent Vector Space에 정상 데이터의 공통적인 Feature들이 잘 함축
 <br/>
 #### Libraries
 ```python
+
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F
