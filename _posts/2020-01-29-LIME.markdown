@@ -5,7 +5,7 @@ date: 2020-01-29 00:00:00 +0000
 description: Expaining the Predictions of Any Classifier
 img: /lime/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-categories: [PAPER_REVIEW]
+categories: [PR]
 tags: [PaperReview, ExplainableAI]
 
 ---
