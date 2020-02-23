@@ -222,10 +222,10 @@ EVL은 기본적으로 CE와 같은 컨셉을 공유한다. 0을 1이라 예측�
 <br/>
 <div class="row">
   <div class="column">
-    <img src="/assets/img/evl/evlten.jpg" alt="l1" style="width:100%">
+    <img src="/assets/img/evl/evlten.jpg" alt="l1" style="width:50%">
   </div>
   <div class="column">
-    <img src="/assets/img/evl/evleleven.jpg" alt="l2" style="width:100%">
+    <img src="/assets/img/evl/evleleven.jpg" alt="l2" style="width:50%">
   </div>
 </div>
 <br/>
@@ -263,10 +263,10 @@ L1 로스를 통해 학습되는 것도 크게 다르지 않다. 마찬가지로
 <br/>
 <div class="row">
   <div class="column">
-    <img src="/assets/img/evl/evltwelve.jpg" alt="f1" style="width:100%">
+    <img src="/assets/img/evl/evltwelve.jpg" alt="f1" style="width:50%">
   </div>
   <div class="column">
-    <img src="/assets/img/evl/evlthirteen.jpg" alt="mse" style="width:100%">
+    <img src="/assets/img/evl/evlthirteen.jpg" alt="mse" style="width:50%">
   </div>
 </div>
 <br/> 
