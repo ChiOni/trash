@@ -5,6 +5,7 @@ date: 2020-02-03 00:00:00 +0000
 description: Histogram Loss
 img: /hs/profile.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
+catagories: [PAPER_REVIEW]
 tags: [PaperReview, Distiributional Losses]
 ---
 
