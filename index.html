@@ -1,7 +1,24 @@
 ---
 layout: main
 ---
-{% for post in paginator.posts %}
+<header class="site-category">
+  <ul>
+    
+    {% assign pages_list = site.pages %}
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if node.layout == "category" %}
+          <li><a class="category-link {% if page.url == node.url %} active{% endif %}"
+          href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    
+</ul>
+</header>
+
+
+<!-- {% for post in paginator.posts %}
 <article class="post">
   {% if post.img %}
     <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
@@ -17,3 +34,4 @@ layout: main
 {% endfor %}
 
 {% include pagination.html %}
+-->
