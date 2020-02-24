@@ -370,7 +370,7 @@ train(CAE, CAE_loss, CAE_optimizer, num_epochs)
 AE_normal,AE_anomal = [], []
 CAE_normal,CAE_anomal = [], []
 
-for X, _ in normal_test:
+for X, _ in normal_train:
   X = X.to(device)
 
   # Forward Pass
@@ -385,7 +385,8 @@ for X, _ in normal_test:
     CAE_anomal.append(CAE_loss(CAE_output.view(1,28,28), X).item())
 ```
   
-Loss에 대한 히스토그램과 Confusion Matrix를 만드는 함수는 따로 첨부하지 않는다.  
+Loss에 대한 히스토그램과 Confusion Matrix를 만드는 함수는 따로 첨부하지 않는다. 
+
   
 <br/>
 <center><img src="/assets/img/pe/ae/aeseven.jpg"></center>
