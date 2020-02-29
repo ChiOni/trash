@@ -168,7 +168,7 @@ w 사이즈의 1d 시계열 데이터를 받아 t+1 시점의 값을 GRU 유닛�
   
 여기서 저자가 제안한 부분은 앞서 Memory Network Module에서 학습한 정보를 Attention으로 활용하여 예측값에 반영하는 것이다.  
 <br/>
-<center><img src="/assets/img/evl/evlseven.jpg"></center>  
+<center><img src="/assets/img/pr/evl/evlseven.jpg"></center>  
 <br/>
 Attention의 가중치가 되는 C는 H와 S의 inner product 값이다.  
   
