@@ -20,11 +20,31 @@ tags: [Programming Excercise]
   
 <br/>
 
-<center><img src="/assets/img/pe/ae/profile.jpg" width="300" height="200" ></center>
+<br/>
+
+<img src="/assets/img/pe/ae/profile.jpg" width="300" height="200" >
 <br/>
 
 [Anomaly Detection with Auto Encoder](https://chioni.github.io/AE)  
   
 Feature Extraction의 이론적 배경을 이해하고 Auto Encoder가 어떻게 이상탐지 분야에 적용될 수 있는지 확인합니다.   
   
-<b>#Auto Encoder #Anomaly Detection #MNIST</b>  
+<b>#Auto Encoder #Anomaly Detection</b>  
+
+<br/>
+
+<br/>
+
+<br/>
+
+<img src="/assets/img/pe/gnn/profile.jpg" width="300" height="200" >
+  
+Graph is everything! 그래프 데이터가 어떻게 다양한 Task에 적용될 수 있는지 Graph Convolution Network를 중심으로 확인합니다.  
+  
+<b>#Graph Neurl Network #Graph Embedding</b>  
+
+<br/>
+
+<br/>
+
+<br/>
