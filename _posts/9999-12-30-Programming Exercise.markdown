@@ -20,6 +20,9 @@ tags: [Programming Excercise]
   
 <br/>
 
+<center><img src="/assets/img/pe/ae/profile.jpg" width="300" height="200" ></center>
+<br/>
+
 [Anomaly Detection with Auto Encoder](https://chioni.github.io/AE)  
   
 Feature Extraction의 이론적 배경을 이해하고 Auto Encoder가 어떻게 이상탐지 분야에 적용될 수 있는지 확인합니다.   
