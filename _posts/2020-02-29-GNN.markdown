@@ -25,7 +25,7 @@ tags: [Code Excercise, Graph Neural Network, Node Classification]
 <center><img src="/assets/img/pe/gnn/gnnone.jpg"></center>
 <br/>
   
-고인물이 엄청 많은 그래프를 심도 있게 고찰하는 것은 포기하고 기본만 한 번 훝어보고자 한다.  
+그래프를 뉴럴넷을 보기에 앞서 그래프에 대한 기본만 한 번 훝어보고자 한다.  
   
 그래프는 주체가 되는 Node와 관계를 표현한 Edge로 이루어졌다. 관계는 Directed와 Undirected 관계로 나눌 수 있다.  
   
@@ -44,7 +44,7 @@ tags: [Code Excercise, Graph Neural Network, Node Classification]
 그래프를 탐색하는 방식의 차이인데 깊게 혹은 넓게 볼 것인지의 차이라고만 이해하면 될 것 같다.  
   
 <br/>
-<center><img src="/assets/img/pe/gnn/gnnthree.jpg"></center>
+<center><img src="/assets/img/pe/gnn/gnnthree.jpg" width = "400" height = "250"></center>
 <br/>
 
 <br/>
@@ -88,9 +88,7 @@ Random Walk는 아무 Node를 시작점으로 잡고 마구 움직여서 주위�
 컨셉적으로 이해해보자면, 각 Node를 d 길이의 벡터로 임베딩할 것인데,  
   
 Random walk를 통해 가깝다고 나타단 노드와는 inner product값이 크고, 멀리 있는 노드와는 값이 작도록 학습될 것이다.  
-  
-그리고 이런 방향의 학습을 위해 skip gramm loss와 비용의 감소를 위해 negative sampling이 사용되는데 일단 넘어가자.  
-  
+    
 그런데 DeepWalk에서는 Random walk를 정말로 random하게 취하여 그래프의 전체 Structure를 잘 캡쳐하지 못했었는데,  
   
 이후에 나온 <b>node2vec (KDD 2016)</b> 논문에서 이것을 보완하여 dfs, bfs 전략을 융합했고, 현재에도 많이 사용되고 있다고 한다.  
@@ -100,5 +98,48 @@ Random walk를 통해 가깝다고 나타단 노드와는 inner product값이 �
 <br/>
 
 ## 02.  Graph Neural Network (GNN)
+<br/>
+N개의 노드의 skip gram loss를 최소화하는 N x d(# of feature) 매트릭스를 학습하는 임베딩 기법은 shallow encoding이라 불린다.  
+  
+이런 고전의 방법들은 몇가지 한계점이 있는데  
+  
+(1) 각 노드가 Parameter를 공유하지 않고  
+  
+(2) 학습에서 보지 않은 노드를 임베딩할 수 없고  
+  
+(3) 엣지 관계 이외의 노드의 특징을 임베딩 과정에 반영할 수 없었다.
+<br/>
+따라서 이런 한계점들을 극복하고자 고안된 "깊은" 임베딩 기법이 바로 Graph Neural Networks이다.  
+  
+GNN의 가장 큰 특징은 특정 Node의 Neighbor Node 정보를 Aggregate한 값을 임베딩에 활용하는 것이라 볼 수 있는데  
+  
+Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 천천히 봐 볼 필요가 있다.  
+  
+<br/>
+<center><img src="/assets/img/pe/gnn/gnnfour.jpg"></center>
+<br/>
+
+우리가 타겟하는 노드가 v일때, v에게는 N(v)라는 이웃 노드 집합이 존재한다.  
+  
+4번 째 줄은 N(v)안에 있는 각각의 u 노드에 존재하는 N(u)의 정보를 취합하는 과정이며  
+  
+5번 째 줄은 u노드의 정보와 N(u)의 정보를 취합하는 과정이라는 것을 알 수 있다.  
+  
+즉, 0-depth node의 정보를 얻기 위해 1-depth의 정보가 들어가는데, 1-depth의 정보에는 2-depth와 3-depth의 정보가 들어가는 것이다.  
+  
+정리하자면 GNN은 각 노드에 특화한 임베딩 벡터를 업데이트 하는 것이 아니라 목표 노드의 이웃을 잘 취합하도록 학습된다.  
+  
+따라서 임베딩 과정에서 각 노드들이 Parameter를 공유할 수 있고 새로운 노드에도 바로 적용할 수 있다는 장점이 있다.  
+ 
+<br/>
+
+<br/>
+
+## 03.  Node Classfication Task (Example)  
+<br/>
+
+
+  
+
 
 
