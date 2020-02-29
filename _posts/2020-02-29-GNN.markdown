@@ -116,7 +116,7 @@ GNN의 가장 큰 특징은 특정 Node의 Neighbor Node 정보를 Aggregate한 
 Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 천천히 봐 볼 필요가 있다.  
   
 <br/>
-<center><img src="/assets/img/pe/gnn/gnnfour.jpg"></center>
+<center><img src="/assets/img/pe/gnn/gnnfive.jpg"></center>
 <br/>
 
 우리가 타겟하는 노드가 v일때, v에게는 N(v)라는 이웃 노드 집합이 존재한다.  
