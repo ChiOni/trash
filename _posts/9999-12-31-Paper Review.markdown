@@ -20,7 +20,9 @@ Anomaly Detection 분야에 특히 관심이 많지만 재밌어 보이는 것�
   
 <br/>
 
-<center><img src="/assets/img/pr/evl/profile.jpg" width="300" height="200" ></center>
+<br/>
+
+<img src="/assets/img/pr/evl/profile.jpg" width="300" height="200" >
 <br/>
 
 [Modeling Extreme Events in Time Series Prediction (KDD 2019)](https://chioni.github.io/EVL)  
@@ -33,7 +35,9 @@ Extreme Value Theory에 기초하여 이상치가 존재하는 시계열 데이�
 
 <br/>
 
-<center><img src="/assets/img/pr/hs/profile.jpg" width="300" height="200"></center>
+<br/>
+
+<img src="/assets/img/pr/hs/profile.jpg" width="300" height="200">
 <br/>
 
 [Improving regression performance with distributional losses (ICML 2018)](https://chioni.github.io/HS)  
@@ -46,7 +50,9 @@ Regression Task에서 분포 자체를 학습하는 일이 Quadratic Loss를 사
 
 <br/>
 
-<center><img src="/assets/img/pr/maml/profile.jpg" width="300" height="200"></center>
+<br/>
+
+<img src="/assets/img/pr/maml/profile.jpg" width="300" height="200">
 <br/>
 
 [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (ICML 2017)](https://chioni.github.io/MAML)  
@@ -59,7 +65,9 @@ Regression Task에서 분포 자체를 학습하는 일이 Quadratic Loss를 사
 
 <br/>
 
-<center><img src="/assets/img/pr/lime/profile.jpg" width="300" height="200"></center>
+<br/>
+
+<img src="/assets/img/pr/lime/profile.jpg" width="300" height="200">
 <br/>
 
 [Why Should I Trust You? (KDD 2016)](https://chioni.github.io/LIME)  
@@ -68,6 +76,8 @@ Black Box 모델의 결과물을 "지협적인 쉬운 설명"으로 해석하는
   
 <b>#Explainable AI #Local Interpretable Model-Agnostic Explanations</b>  
   
+<br/>
+
 <br/>
 
 <br/>
