@@ -20,6 +20,9 @@ Anomaly Detection 분야에 특히 관심이 많지만 재밌어 보이는 것�
   
 <br/>
 
+<center><img src="/assets/img/pr/evl/profile.jpg"></center>
+<br/>
+
 [Modeling Extreme Events in Time Series Prediction (KDD 2019)](https://chioni.github.io/EVL)  
   
 Extreme Value Theory에 기초하여 이상치가 존재하는 시계열 데이터를 모델링할 수 있는 구조와 로스를 제안합니다. 
@@ -28,6 +31,9 @@ Extreme Value Theory에 기초하여 이상치가 존재하는 시계열 데이�
   
 <br/>
 
+<br/>
+
+<center><img src="/assets/img/pr/hs/profile.jpg"></center>
 <br/>
 
 [Improving regression performance with distributional losses (ICML 2018)](https://chioni.github.io/HS)  
@@ -40,6 +46,9 @@ Regression Task에서 분포 자체를 학습하는 일이 Quadratic Loss를 사
 
 <br/>
 
+<center><img src="/assets/img/pr/maml/profile.jpg"></center>
+<br/>
+
 [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (ICML 2017)](https://chioni.github.io/MAML)  
   
 학습하는 방법을 학습한다의 컨셉으로 여러 Task에 빠르게 최적화되는 모델링 방법을 제안합니다.  
@@ -48,6 +57,9 @@ Regression Task에서 분포 자체를 학습하는 일이 Quadratic Loss를 사
   
 <br/>
 
+<br/>
+
+<center><img src="/assets/img/pr/lime/profile.jpg"></center>
 <br/>
 
 [Why Should I Trust You? (KDD 2016)](https://chioni.github.io/LIME)  
