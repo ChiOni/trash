@@ -1,8 +1,8 @@
 ---
 layout: post
-title: (PyTorch) Auto Encoder 
-date: 2020-02-13 00:00:00 +0000
-description: Extreme Valuee Loss
+title: Auto Encoder 
+date: 2020-02-23 00:00:00 +0000
+description: Anomaly Detection with Auto Encoder
 img: /pe/ae/profile.jpg 
 fig-caption:   
 categories: [PE]
