@@ -44,7 +44,7 @@ tags: [Code Excercise, Graph Neural Network, Node Classification]
 그래프를 탐색하는 방식의 차이인데 깊게 혹은 넓게 볼 것인지의 차이라고만 이해하면 될 것 같다.  
   
 <br/>
-<center><img src="/assets/img/pe/gnn/gnnthree.jpg" width = "400" height = "250"></center>
+<center><img src="/assets/img/pe/gnn/gnnthree.jpg" width="50%" height="50%"></center>
 <br/>
 
 <br/>
@@ -100,6 +100,8 @@ Random walk를 통해 가깝다고 나타단 노드와는 inner product값이 �
 ## 02.  Graph Neural Network (GNN)
 <br/>
 N개의 노드의 skip gram loss를 최소화하는 N x d(# of feature) 매트릭스를 학습하는 임베딩 기법은 shallow encoding이라 불린다.  
+
+<br/>  
   
 이런 고전의 방법들은 몇가지 한계점이 있는데  
   
@@ -107,7 +109,10 @@ N개의 노드의 skip gram loss를 최소화하는 N x d(# of feature) 매트�
   
 (2) 학습에서 보지 않은 노드를 임베딩할 수 없고  
   
-(3) 엣지 관계 이외의 노드의 특징을 임베딩 과정에 반영할 수 없었다.
+(3) 엣지 관계 이외의 노드의 특징을 임베딩 과정에 반영할 수 없었다.  
+
+<br/>
+  
 <br/>
 따라서 이런 한계점들을 극복하고자 고안된 "깊은" 임베딩 기법이 바로 Graph Neural Networks이다.  
   
@@ -125,7 +130,7 @@ Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 �
   
 5번 째 줄은 u노드의 정보와 N(u)의 정보를 취합하는 과정이라는 것을 알 수 있다.  
   
-즉, 0-depth node의 정보를 얻기 위해 1-depth의 정보가 들어가는데, 1-depth의 정보에는 2-depth와 3-depth의 정보가 들어가는 것이다.  
+0-depth node의 정보를 얻기 위해 1-depth의 정보가 들어가는데, 1-depth의 정보에는 2-depth와 3-depth의 정보가 들어가는 것이다.  
   
 정리하자면 GNN은 각 노드에 특화한 임베딩 벡터를 업데이트 하는 것이 아니라 목표 노드의 이웃을 잘 취합하도록 학습된다.  
   
@@ -140,18 +145,181 @@ Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 �
 그래프 데이터는 일반적인 ML 공부 과정에서는 다룰 일이 없어 처음 봤을때 꽤나 낯설게 느껴질 수 있다.  
   
 #### Cora Dataset
-<br/>
 <center><img src="/assets/img/pe/gnn/gnnsix.jpg"></center>
 <br/>
 Cora Dataset은 2708개의 과학 논문들이 서로 어떤 관계로 cited되었고 어떤 단어들이 포함됬는지에 관한 정보를 담고 있다.  
   
+content 파일은 (논문의 id) / (각 논문의 feature 정보 - 1433개의 단어) / (논문의 장르) 3종류의 정보가   
+  
+cited 파일은 (참조된 논문) -> (참조한 논문) 2개의 컬럼으로 이루어져있다.  
+  
 cites 데이터는 전체 그래프가 아닌 개별 edge 정보만 담고 있기 때문에 2708 x 2708 매트릭스로 가공해주는 과정이 필요하다.  
   
-데이터를 어떻게 가공해야하는지에 대해서는 [tkipf/pygcn](https://github.com/tkipf/pygcn/blob/master/pygcn/utils.py) 를 참조했습니다.  
+데이터를 어떻게 가공해야하는지에 대해서는 [github.com/tkipf/pygcn](https://github.com/tkipf/pygcn/blob/master/pygcn/utils.py) 를 참조했다.  
   
+```python
+A, features, labels, idx_train, idx_val, idx_test = load_data()
+```
+<br/>
+load_data 함수를 통해 데이터를 가공해서 불러오고나면 그래프 정보가 담긴 매트릭스 A를 얻을 수 있다.  
+  
+논문의 label은 총 7가지로 Case_Based / Genetic_Algorithms / Neural_Networks / Probabilistic_Methods 등등이 있다.  
+  
+```python
+class GNN_layer(nn.Module):
+    def __init__(self, in_features, out_features, A):
+        super(GNN_layer, self).__init__()
+        self.in_features = in_features
+        self.out_features = out_features
+        self.A = A
+        self.fc = nn.Linear(in_features, out_features)
+        
+    def forward(self, X):
+        return self.fc(torch.spmm(self.A, X)) #이웃 정보 종합
+
+class GNN(nn.Module):
+    def __init__(self, num_feature, num_class, A):
+        super(GNN, self).__init__()
+
+        self.feature_extractor = nn.Sequential(
+                                    GNN_layer(num_feature, 16, A),
+                                    nn.ReLU(),
+                                    GNN_layer(16, num_class, A)
+                                )
+        
+    def forward(self, X):
+        return self.feature_extractor(X)
+```
+<br/>
+GNN 모델의 구현으로 바로 넘어가보자.  
+  
+GNN 모델은 2번의 GNN_layer를 넘어가게 되는데 GNN_layer함수가 의미하는 바가 무엇인지 이해해야 한다.  
+  
+GNN_layer class의 forward 함수는 A와 X의 곱으로 얻어진 매트릭스를 row 단위로 fully connected layer로 넘기는 역할을 한다.  
+  
+A는 모든 논문의 그래프 정보가 담긴 2708 x 2708 매트릭스, X는 각 논문읜 feature 정보가 담긴 2708 x 1433 매트릭스이다.  
+  
+그렇다면 AX는 다시 2708 x 1433의 매트릭스가 생성되는데 이 행렬의 각 element가 무엇을 의미하는지 생각해보자.  
+  
+행렬의 (1,1)이 의미하는 것은 <b>id 1의 논문과 "연결"된 모든 논문들의 feature 1 값의 곱이다.</b>  
+  
+그리고 2708 x 1433의 매트릭스가 fc layer를 거치고 나서는 2708 x 16(우리가 임의로 설정한)의 크기로 임베딩되었다.  
+  
+이런 GNN_layer를 두 번 탄다는 것은 A*(embeded(AX))의 행렬을 얻는 것과 같은 소리이다.  
+  
+다시 한 번 곱해진 위의 행렬의 (1,1) 값의 의미를 생각해보자.  
+  
+id 1 논문에 연결된 논문들에 연결된 논문들의 feature 정보까지도 포함되어있다는 것을 이해해보자.  
+
+<br/>
+
+<br/>
+  
+```python
+def train(model, Loss, optimizer, num_epochs):
+  train_loss_arr = []
+  test_loss_arr = []
+
+  best_test_loss = 99999999
+  early_stop, early_stop_max = 0., 10.
+
+  for epoch in range(num_epochs):
+
+    # Forward Pass
+    model.train()
+    output = model(features)
+    train_loss = criterion(output[idx_train], labels[idx_train])
+
+    # Backward and optimize
+    train_loss.backward()
+    optimizer.step()
+        
+    train_loss_arr.append(train_loss.data)
+    
+    if epoch % 10 == 0:
+        model.eval()
+        
+        output = model(features)
+        val_loss = criterion(output[idx_val], labels[idx_val])
+        test_loss = criterion(output[idx_test], labels[idx_test])
+        
+        val_acc = accuracy(output[idx_val], labels[idx_val])
+        test_acc = accuracy(output[idx_test], labels[idx_test])
+        
+        test_loss_arr.append(test_loss)
+        
+        if best_ACC < val_acc:
+            best_ACC = val_acc
+            early_stop = 0
+            final_ACC = test_acc
+            print('Epoch [{}/{}], Train Loss: {:.4f}, Test Loss: {:.4f}, Test ACC: {:.4f} *'.format(epoch, 100, train_loss.data, test_loss, test_acc))
+        else:
+            early_stop += 1
+
+            print('Epoch [{}/{}], Train Loss: {:.4f}, Test Loss: {:.4f}, Test ACC: {:.4f}'.format(epoch, 100, train_loss.data, test_loss, test_acc))
+
+    if early_stop >= early_stop_max:
+        break
+        
+  print("Final Accuracy::", final_ACC)
+
+```
+
+방금 생성한 GNN 모델과 비교의 대상이 될 base FC 모델을 같은 방법으로 학습할 것이다.  
+  
+아래는 가장 기본적인 Fully Connected Nueral Network 이다.  
+  
+```python
+class FCN(nn.Module):
+    def __init__(self, num_feature, num_class):
+        super(FCN, self).__init__()
+
+        self.feature_extractor = nn.Sequential(
+                                    nn.Linear(num_feature, 16),
+                                    nn.ReLU(),
+                                    nn.Linear(16, num_class)
+                                )
+
+    def forward(self, x):
+        return self.feature_extractor(x)
+```
+<br/>
+
+<br/>
+
+이제 모델을 할당하고 학습을 시작한다.  
+  
+```python
+# FCN 학습 돌려서 epoch에 따른 Loss 확인
+model = FCN(features.size(1) , labels.unique().size(0))
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.1, weight_decay=0.0001)
+
+train(model, criterion, optimizer, 1000)
 
 
+# GNNN 학습 돌려서 epoch에 따른 Loss 확인
+model = GNN(features.size(1) , labels.unique().size(0), A)
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.1, weight_decay=0.0001)
+
+train(model, criterion, optimizer, 1000)
+```
+<br/>
+FCN을 통한 최종 ACC는 0.5770 GNN을 통한 최종 ACC는 0.8280으로 나타났다.  
   
+사실 직관적으로 너무 당연하게도 GNN의 성능이 더 우수할 수 밖에 없다.  
+  
+FCN이 분류에 활용할 수 있는 정보는 해당 논문의 단어 데이터 밖에 없는데 반해 GNN은 연결된 다른 논문의 정보도 활용하기 때문이다.  
+  
+<br/>
+
+<br/>
+그래프 뉴럴 넷의 가장 기본적인 컨셉과 모델링을 실습했다.  
+  
+이어서 응용 버젼인 Graph Attention Network와 Graph Convolution Network를 실습하고 최신 논문인 simGNN을 리뷰할 계획이다.  
+  
+<b>끝</b>
 
   
 
