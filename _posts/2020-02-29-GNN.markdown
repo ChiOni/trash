@@ -137,7 +137,21 @@ Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 �
 
 ## 03.  Node Classfication Task (Example)  
 <br/>
+그래프 데이터는 일반적인 ML 공부 과정에서는 다룰 일이 없어 처음 봤을때 꽤나 낯설게 느껴질 수 있다.  
+  
+#### Cora Dataset
+<br/>
+<center><img src="/assets/img/pe/gnn/gnnfive.jpg"></center>
+<br/>
+Cora Dataset은 2708개의 과학 논문들이 서로 어떤 관계로 cited되었고 어떤 단어들이 포함됬는지에 관한 정보를 담고 있다.  
+  
+cites 데이터는 전체 그래프가 아닌 개별 edge 정보만 담고 있기 때문에 2708 x 2708 매트릭스로 가공해주는 과정이 필요하다.  
+  
+데이터를 어떻게 가공해야하는지에 대해서는 [tkipf/pygcn](https://github.com/tkipf/pygcn/blob/master/pygcn/utils.py) 를 참조했습니다.  
+  
 
+
+  
 
   
 
