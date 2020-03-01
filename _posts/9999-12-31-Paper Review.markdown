@@ -12,7 +12,7 @@ tags: [Paper Review, ML]
 
 <br/>
 
-Review of Deep Machine Learning
+Reviews of Deep Machine Learning
 
 <br/>
 
