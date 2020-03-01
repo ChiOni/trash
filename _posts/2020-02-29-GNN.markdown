@@ -141,7 +141,7 @@ Aggregation에 대한 구체적인 이해를 위해 아래의 알고리즘을 �
   
 #### Cora Dataset
 <br/>
-<center><img src="/assets/img/pe/gnn/gnnfive.jpg"></center>
+<center><img src="/assets/img/pe/gnn/gnnsix.jpg"></center>
 <br/>
 Cora Dataset은 2708개의 과학 논문들이 서로 어떤 관계로 cited되었고 어떤 단어들이 포함됬는지에 관한 정보를 담고 있다.  
   
