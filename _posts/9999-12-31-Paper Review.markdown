@@ -55,10 +55,10 @@ Regression Task에서 분포 자체를 학습하는 일이 Quadratic Loss를 사
 
 <br/>
 
-<center><img src="/assets/img/pr/lime/profile.jpg" width="300" height="200"></center><b>#Explainable AI #Local Interpretable Model-Agnostic Explanations</b>  
+<center><img src="/assets/img/pr/lime/profile.jpg" width="300" height="200"></center>  
 <br/>
 
-[Why Should I Trust You? (KDD 2016)](https://chioni.github.io/LIME)  
+[Why Should I Trust You? (KDD 2016)](https://chioni.github.io/LIME)<b>#Explainable AI #Local Interpretable Model-Agnostic Explanations</b>  
   
 Black Box 모델의 결과물을 지협적인 쉬운 모델을 통해 이해하는 방법을 제안합니다.  
   
