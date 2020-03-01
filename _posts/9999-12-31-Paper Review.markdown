@@ -12,10 +12,6 @@ tags: [Paper Review, ML]
 
 <br/>
 
-Reviews of Deep Machine Learning  
-  
-<br/>
-  
 <br/>
 
 ML 분야의 많은 논문들을 읽고 정리하고 공유하고자 합니다.  
