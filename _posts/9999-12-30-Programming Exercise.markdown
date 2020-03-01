@@ -12,7 +12,7 @@ tags: [Programming Excercise]
 <br/>
 
 Understanding theory and applying it by Pytorch  
-                                                                                                                              
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 <br/>
 
 이론을 이해하고 Pytorch를 사용해 실험적으로 학습합니다.    
