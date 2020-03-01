@@ -9,6 +9,9 @@ categories: [PE]
 tags: [Programming Excercise]
 
 ---
+<br/>
+
+Understanding theory and applying it by Pytorch  
 
 <br/>
 
