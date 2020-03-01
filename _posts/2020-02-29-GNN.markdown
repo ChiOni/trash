@@ -44,7 +44,7 @@ tags: [Code Excercise, Graph Neural Network, Node Classification]
 그래프를 탐색하는 방식의 차이인데 깊게 혹은 넓게 볼 것인지의 차이라고만 이해하면 될 것 같다.  
   
 <br/>
-<center><img src="/assets/img/pe/gnn/gnnthree.jpg" width="50%" height="50%"></center>
+<center><img src="/assets/img/pe/gnn/gnnthree.jpg"></center>
 <br/>
 
 <br/>
