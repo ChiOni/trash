@@ -37,7 +37,7 @@ Feature Extraction의 이론적 배경을 이해하고 Auto Encoder가 어떻게
 
 <center><img src="/assets/img/pe/gnn/profile.jpg" width="300" height="200" ></center>
   
-[Node Classfication with Graph Neural Network](https://chioni.github.io/GNN) <b> #Graph Neural Network  #Node Classification</b>  
+[Node Classfication with Graph Neural Network](https://chioni.github.io/GNN)<b> #Graph Neural Network  #Node Classification</b>  
   
 Graph is everything! 그래프 데이터에 GCN / GAT 모델을 적용하여 분류 Task를 수행해봅니다.  
   
