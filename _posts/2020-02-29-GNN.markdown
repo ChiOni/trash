@@ -317,7 +317,7 @@ FCN이 분류에 활용할 수 있는 정보는 해당 논문의 단어 데이�
 <br/>
 그래프 뉴럴 넷의 가장 기본적인 컨셉과 모델링을 실습했다.  
   
-이어서 응용 버젼인 Graph Attention Network를 실습하고 GraphSAGE모델을 제안한 2017년 논문을 리뷰할 계획이다.  
+이어서 응용 버젼인 Graph Attention Network를 실습하고 Graph similarity 관련 논문을 리뷰할 계획이다.  
   
 <b>끝</b>
 
