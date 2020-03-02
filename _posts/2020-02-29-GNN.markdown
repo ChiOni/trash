@@ -166,7 +166,7 @@ load_data 함수를 통해 데이터를 가공해서 불러오고나면 그래�
 논문의 label은 총 7가지로 Case_Based / Genetic_Algorithms / Neural_Networks / Probabilistic_Methods 등등이 있다.  
   
 ```python
-class GNN_layer(nn.Module):
+class GCN_layer(nn.Module):
     def __init__(self, in_features, out_features, A):
         super(GNN_layer, self).__init__()
         self.in_features = in_features
@@ -177,7 +177,7 @@ class GNN_layer(nn.Module):
     def forward(self, X):
         return self.fc(torch.spmm(self.A, X)) #이웃 정보 종합
 
-class GNN(nn.Module):
+class GCN(nn.Module):
     def __init__(self, num_feature, num_class, A):
         super(GNN, self).__init__()
 
@@ -191,11 +191,11 @@ class GNN(nn.Module):
         return self.feature_extractor(X)
 ```
 <br/>
-GNN 모델의 구현으로 바로 넘어가보자.  
+GNN에서 가장 기본적인 형태인 GCN(Graph Convolutional Network) 모델의 구현으로 바로 넘어가보자.  
   
-GNN 모델은 2번의 GNN_layer를 넘어가게 되는데 GNN_layer함수가 의미하는 바가 무엇인지 이해해야 한다.  
+GCN 모델은 2번의 GCN_layer를 넘어가게 되는데 GCN_layer함수가 의미하는 바가 무엇인지 이해해야 한다.  
   
-GNN_layer class의 forward 함수는 A와 X의 곱으로 얻어진 매트릭스를 row 단위로 fully connected layer로 넘기는 역할을 한다.  
+GCN_layer class의 forward 함수는 A와 X의 곱으로 얻어진 매트릭스를 row 단위로 fully connected layer로 넘기는 역할을 한다.  
   
 A는 모든 논문의 그래프 정보가 담긴 2708 x 2708 매트릭스, X는 각 논문읜 feature 정보가 담긴 2708 x 1433 매트릭스이다.  
   
@@ -265,7 +265,7 @@ def train(model, Loss, optimizer, num_epochs):
 
 ```
 
-방금 생성한 GNN 모델과 비교의 대상이 될 base FC 모델을 같은 방법으로 학습할 것이다.  
+방금 생성한 GCN 모델과 비교의 대상이 될 base FC 모델을 같은 방법으로 학습할 것이다.  
   
 아래는 가장 기본적인 Fully Connected Nueral Network 이다.  
   
@@ -298,26 +298,26 @@ optimizer = optim.Adam(model.parameters(), lr=0.1, weight_decay=0.0001)
 train(model, criterion, optimizer, 1000)
 
 
-# GNNN 학습 돌려서 epoch에 따른 Loss 확인
-model = GNN(features.size(1) , labels.unique().size(0), A)
+# GCN 학습 돌려서 epoch에 따른 Loss 확인
+model = GCN(features.size(1) , labels.unique().size(0), A)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.1, weight_decay=0.0001)
 
 train(model, criterion, optimizer, 1000)
 ```
 <br/>
-FCN을 통한 최종 ACC는 0.5770 GNN을 통한 최종 ACC는 0.8280으로 나타났다.  
+FCN을 통한 최종 ACC는 0.5770 GCN을 통한 최종 ACC는 0.8280으로 나타났다.  
   
-사실 직관적으로 너무 당연하게도 GNN의 성능이 더 우수할 수 밖에 없다.  
+사실 직관적으로 너무 당연하게도 GCN의 성능이 더 우수할 수 밖에 없다.  
   
-FCN이 분류에 활용할 수 있는 정보는 해당 논문의 단어 데이터 밖에 없는데 반해 GNN은 연결된 다른 논문의 정보도 활용하기 때문이다.  
+FCN이 분류에 활용할 수 있는 정보는 해당 논문의 단어 데이터 밖에 없는데 반해 GCN은 연결된 다른 논문의 정보도 활용하기 때문이다.  
   
 <br/>
 
 <br/>
 그래프 뉴럴 넷의 가장 기본적인 컨셉과 모델링을 실습했다.  
   
-이어서 응용 버젼인 Graph Attention Network와 Graph Convolution Network를 실습하고 최신 논문인 simGNN을 리뷰할 계획이다.  
+이어서 응용 버젼인 Graph Attention Network를 실습하고 최신 논문인 simGNN을 리뷰할 계획이다.  
   
 <b>끝</b>
 
