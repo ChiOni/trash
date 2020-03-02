@@ -168,7 +168,7 @@ load_data 함수를 통해 데이터를 가공해서 불러오고나면 그래�
 ```python
 class GCN_layer(nn.Module):
     def __init__(self, in_features, out_features, A):
-        super(GNN_layer, self).__init__()
+        super(GCN_layer, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
         self.A = A
